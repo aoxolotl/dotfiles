@@ -12,3 +12,4 @@ cp: overwrite '/home/reverie/.vimrc'?
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
 100 76623  100 76623    0     0   108k      0 --:--:-- --:--:-- --:--:--  108k
+```
