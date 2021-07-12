@@ -85,8 +85,8 @@ set splitbelow
 set splitright
 
 " Code folding
-set foldmethod=indent
-set foldlevel=99
+"set foldmethod=indent
+"set foldlevel=99
 
 " Set update time
 set updatetime=100
@@ -98,25 +98,20 @@ nnoremap <leader>z za
 call plug#begin('~/.vim/plugged')
 
 """ Insert plugins here
-Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'tpope/vim-surround'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'}
 Plug 'junegunn/fzf.vim'
 Plug 'jremmen/vim-ripgrep'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'airblade/vim-gitgutter'
+""" Plug 'airblade/vim-gitgutter'
 Plug 'scrooloose/nerdtree'
-Plug 'davidhalter/jedi-vim'
+Plug 'daveyarwood/vim-alda'
 """ End plugins
 
 call plug#end()
 
-
-"" Jedi vim options
-" Disable popup on dot
-let g:jedi#popup_on_dot = 0
-let g:jedi#rename_command = ' '
 
 "" Filetype specific commands
 " Run python script
@@ -144,6 +139,11 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " 80 char limit for markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
 
+" Play alda files 
+autocmd FileType alda noremap <leader>y <Esc>:!clear; alda play --file %<CR>
+
+""" End file type specific commands
+
 
 nmap <leader>e /^\n 	ýa00/kuk"tp00"tyt	/kukdkuj
 
@@ -151,3 +151,7 @@ nmap <leader>e /^\n 	ýa00/kuk"tp00"tyt	/kukdkuj
 nnoremap L :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 nnoremap <leader>r :Rg 
 nnoremap <leader>f :Files<CR>
+
+cnoremap <expr> %% expand('%:h').'/'
+nmap <leader>ew :e %%
+nmap <leader>ev :vs %%
